@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blog Home</title>
+    <!-- Load Tailwind CSS for simple styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for improved readability */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Site Title -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-indigo-600 tracking-tight">
+                        The Developer's Blog
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-150 font-medium">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-150 font-medium">Categories</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-150 font-medium">About</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-150 font-medium">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button (Hidden for brevity, but crucial for production) -->
+                <button class="md:hidden text-gray-500 hover:text-indigo-600 p-2 rounded-md">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        
+        <!-- Featured Section (Hero) -->
+        <div class="bg-white p-8 rounded-xl shadow-lg mb-10 border-l-4 border-indigo-500 hover:shadow-xl transition duration-300">
+            <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-red-100 text-red-800 mb-4">
+                FEATURED
+            </span>
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-3 leading-tight">
+                The Future of Frontend: Why Signals are Replacing Observables
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+                Dive deep into modern state management patterns and understand how reactive primitives like signals offer better performance and developer experience than traditional streams.
+            </p>
+            <div class="flex items-center text-sm text-gray-500">
+                <p>By Jane Doe</p>
+                <span class="mx-3">•</span>
+                <p>October 20, 2025</p>
+                <span class="mx-3">•</span>
+                <p class="text-indigo-600 font-semibold">Read Full Article &rarr;</p>
+            </div>
+        </div>
+
+        <!-- Latest Posts Section -->
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 px-4 sm:px-0">Latest Articles</h3>
+
+        <!-- Grid of Blog Post Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-0">
+
+            <!-- Post Card 1 -->
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl hover:translate-y-[-2px]">
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            JavaScript
+                        </span>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">
+                        10 Essential VS Code Extensions for Efficiency
+                    </h4>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+                        Boost your productivity instantly with these must-have extensions for debugging, code formatting, and navigating large projects like a pro.
+                    </p>
+                    <div class="flex items-center justify-between text-xs text-gray-400 border-t pt-3">
+                        <span>By Mark T.</span>
+                        <span>Sep 15, 2025</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post Card 2 -->
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl hover:translate-y-[-2px]">
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            DevOps
+                        </span>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">
+                        Mastering CI/CD Pipelines with GitHub Actions
+                    </h4>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+                        Automate your deployment workflow, run tests, and secure your environment using the power and simplicity of GitHub's native automation tools.
+                    </p>
+                    <div class="flex items-center justify-between text-xs text-gray-400 border-t pt-3">
+                        <span>By Alex C.</span>
+                        <span>Aug 28, 2025</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post Card 3 -->
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl hover:translate-y-[-2px]">
+                <div class="p-6">
+                    <div class="mb-3">
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                            Design
+                        </span>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">
+                        The Psychology Behind Perfect Color Palettes
+                    </h4>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+                        Learn how to choose colors that not only look good but also influence user perception and drive engagement on your web application.
+                    </p>
+                    <div class="flex items-center justify-between text-xs text-gray-400 border-t pt-3">
+                        <span>By Sarah K.</span>
+                        <span>Jul 10, 2025</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400 text-sm">&copy; 2025 The Developer's Blog. All rights reserved.</p>
+            <div class="mt-4 space-x-4 text-sm">
+                <a href="#" class="text-gray-500 hover:text-indigo-400 transition duration-150">Privacy Policy</a>
+                <a href="#" class="text-gray-500 hover:text-indigo-400 transition duration-150">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
