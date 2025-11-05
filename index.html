@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Basics | Short Course</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-color: #3498db; /* Blue */
+            --secondary-color: #2c3e50; /* Dark Slate */
+            --light-color: #ecf0f1; /* Light Gray */
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background: var(--secondary-color);
+            color: white;
+            padding: 2em 0;
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin-top: 0.5em;
+            font-size: 1.2em;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        section {
+            padding: 40px 0;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1.5em;
+            font-size: 2em;
+        }
+
+        /* Objectives Section */
+        #objectives ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        #objectives li {
+            background: var(--light-color);
+            padding: 15px;
+            margin: 10px;
+            border-left: 5px solid var(--primary-color);
+            width: 40%;
+            min-width: 250px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Modules Section */
+        .module-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .module-item {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .module-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .module-item h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+
+        /* Registration Section */
+        #registration form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #registration input[type="text"],
+        #registration input[type="email"],
+        #registration button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        #registration button {
+            background: var(--primary-color);
+            color: white;
+            border: 0;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        #registration button:hover {
+            background: #2980b9;
+        }
+
+        #message {
+            text-align: center;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: var(--secondary-color);
+            color: white;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            #objectives li {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>🌐 Web Development Basics: A Short Course</h1>
+            <p>Master the essentials of modern web building in just **4 weeks**.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="objectives">
+            <h2>🎯 Course Objectives</h2>
+            <div class="container">
+                <ul>
+                    <li>**Build a Static Website:** Learn to structure and style a professional multi-page site from scratch.</li>
+                    <li>**Understand HTML5 & CSS3:** Master core markup and styling techniques, including responsive design.</li>
+                    <li>**Implement Basic Interactivity:** Use JavaScript to add dynamic features and handle user events.</li>
+                    <li>**Utilize Developer Tools:** Gain familiarity with browser inspection tools and debugging methods.</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="modules">
+            <h2>📚 Course Modules & Schedule</h2>
+            <div class="module-list">
+                
+                <div class="module-item">
+                    <h3>Week 1: HTML Structure</h3>
+                    <p>Fundamentals of HTML, tags, elements, attributes, semantic structure, links, and forms.</p>
+                </div>
+                
+                <div class="module-item">
+                    <h3>Week 2: CSS Styling</h3>
+                    <p>Selectors, box model, colors, typography, external stylesheets, and an introduction to Flexbox.</p>
+                </div>
+
+                <div class="module-item">
+                    <h3>Week 3: Responsive Design</h3>
+                    <p>Media queries, viewport meta tag, mobile-first approach, and building a multi-column layout.</p>
+                </div>
+                
+                <div class="module-item">
+                    <h3>Week 4: JavaScript Basics</h3>
+                    <p>Variables, data types, operators, DOM manipulation, simple functions, and event handling.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="registration">
+            <h2>📝 Registration & Details</h2>
+            <p style="text-align: center; margin-bottom: 20px;">**Course Fee:** ₹199 | **Duration:** 4 Weeks | **Start Date:** November 20, 2025</p>
+
+            <form id="registrationForm">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <button type="submit">Enroll Now</button>
+            </form>
+
+            <div id="message"></div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Web Dev Basics Course | Contact: instructor@gmail.com</p>
+    </footer>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Stop the default form submission
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const messageDiv = document.getElementById('message');
+            
+            // In a real application, you would send this data to a server.
+            // For this static page, we show a confirmation message.
+
+            messageDiv.style.display = 'block';
+            messageDiv.style.backgroundColor = '#d4edda'; // Light green background
+            messageDiv.style.color = '#155724'; // Dark green text
+            messageDiv.innerHTML = `Thank you, **${name}**! Your registration for **${email}** has been received. Check your email for payment instructions.`;
+            
+            // Clear form
+            document.getElementById('registrationForm').reset();
+        });
+    </script>
+</body>
+</html>
