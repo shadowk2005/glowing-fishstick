@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday My Love 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #ffb6c1, #ff69b4, #c71585);
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 15vh; /* Adjusted margin for cake */
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4; }
+      to { text-shadow: 0 0 20px #fff, 0 0 30px #ff1493; }
+    }
+
+    /* === IMPROVED CAKE CSS === */
+    .cake {
+      width: 180px;
+      height: 130px;
+      background: #ffccdd; /* light pink cake base */
+      border-radius: 15px;
+      position: relative;
+      /* Adjusted margin to be smaller */
+      margin: 30px auto; 
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 
+                  0 0 20px rgba(255, 255, 255, 0.6);
+    }
+
+    /* Icing layer */
+    .cake::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: #ff69b4;
+      border-radius: 15px;
+    }
+
+    /* Filling layer */
+    .cake::after {
+      content: '';
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: #b03060; /* darker pink */
+    }
+
+    /* Container for multiple candles */
+    .candles {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      z-index: 10;
+    }
+
+    .candle {
+      width: 10px;
+      height: 40px;
+      /* Striped candle */
+      background: repeating-linear-gradient(
+          45deg,
+          #ff69b4,
+          #ff69b4 5px,
+          #ffffff 5px,
+          #ffffff 10px
+      );
+      border-radius: 5px;
+      position: relative;
+    }
+
+    /* Wick */
+    .candle::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 5px;
+      background: #333;
+    }
+
+    .flame {
+      width: 10px;
+      height: 15px;
+      background: radial-gradient(circle, yellow, orange, red);
+      /* Teardrop/flame shape */
+      border-radius: 50% 50% 50% 0 / 60% 60% 40% 40%;
+      position: absolute;
+      top: -20px; /* Sits on the wick */
+      left: 50%;
+      transform: translateX(-50%);
+      animation: flicker 0.2s infinite alternate;
+      transform-origin: bottom;
+    }
+    /* === END OF CAKE CSS === */
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); opacity: 1; }
+      to { transform: translateX(-50%) scale(1.3); opacity: 0.8; }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .message {
+      font-size: 1.2em;
+      width: 80%;
+      margin: 30px auto;
+      line-height: 1.6;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: 0;
+      font-size: 20px;
+      color: #ffb6c1;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+
+    /* Floating balloons */
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      border-radius: 50% 50% 45% 45%;
+      background: radial-gradient(circle at 30% 30%, #fff, #ff69b4);
+      animation: floatBalloon 10s linear infinite;
+    }
+
+    @keyframes floatBalloon {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    /* Music button */
+    #music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    #music-control:hover {
+      background: #ff1493;
+    }
+
+    /* Love letter popup */
+    #love-letter {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.9);
+      color: #c71585;
+      padding: 30px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      text-align: center;
+      font-size: 1.2em;
+      z-index: 100;
+    }
+
+    #open-letter {
+      background: white;
+      color: #ff1493;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #open-letter:hover {
+      background: #ff1493;
+      color: white;
+    }
+    
+    /* Close button style */
+    #love-letter button {
+        background: #ff1493;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 8px 18px;
+        font-size: 0.9em;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: all 0.3s ease;
+    }
+    #love-letter button:hover {
+        background: #c71585;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fireworks"></canvas>
+
+  <h1>🎉 Happy Birthday, My Love ❤️</h1>
+
+  <!-- === IMPROVED CAKE HTML === -->
+  <div class="cake">
+    <div class="candles">
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+    </div>
+  </div>
+  <!-- === END OF CAKE HTML === -->
+
+
+  <div class="message">
+    You make my world brighter every day.  
+    Today, it’s your turn to shine like these fireworks.  
+    I love you endlessly 💖  
+    <br><br>
+    <button id="open-letter">💌 Open Love Letter</button>
+  </div>
+
+  <!-- Love Letter Popup -->
+  <div id="love-letter">
+    My Dearest,  
+    <br><br>
+    Every moment with you is a reason to smile.  
+    You are my light, my calm, my everything.  
+    On your special day, I just want you to know —  
+    you are loved more than words can ever say.  
+    <br><br>
+    ❤️ Happy Birthday, my forever love ❤️  
+    <br><br>
+    <!-- Styled the close button a bit -->
+    <button onclick="document.getElementById('love-letter').style.display='none'">Close</button>
+  </div>
+
+  <!-- Music -->
+  <audio id="bg-music" loop>
+    <source src="https://rr2---sn-cvh76nl6.googlevideo.com/videoplayback?expire=1763142736&ei=8BcXabOjJJfMi9oPku_yyAM&ip=197.204.184.72&id=o-AOSRTW9Ev9MpPiqATVFAlkJyZHxAxaBgtNkY-yPVEzVW&itag=140&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&cps=100&bui=AdEuB5T5xritr3EaIv5KzQbiKJbCJMkJ4FjjNRw-wfNiK-LhpDoFV4K2WiVOmr8ZgV2IgaA3uDmFh76i&vprv=1&svpuc=1&mime=audio%2Fmp4&ns=-IE-Pfti2Os_TXicAQWnoP0Q&rqh=1&gir=yes&clen=12563787&dur=776.266&lmt=1741358687710821&keepalive=yes&lmw=1&fexp=51557447,51565115,51565682,51580970&c=TVHTML5&sefc=1&txp=5318224&n=ODJabVtWw-pq3A&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIhALGCL9DJb4uPpTjdz0RZktK5PetEErIGVTqH61Wfc6WsAiBV9aP_FCYVxdkrps4-b--0MLFDyVzHlN5gEw36JQd15w%3D%3D&rm=sn-5abxgpxuxaxjvh-vbme7s,sn-hpa6d7e&rrc=79,104,191&req_id=64f65fb201cba3ee&rms=rdu,au&ipbypass=yes&redirect_counter=3&cm2rm=sn-ci5gup-cvhes7e&cms_redirect=yes&cmsv=e&met=1763121163,&mh=af&mip=2401:4900:c0b7:4e1d:46:113:6134:df70&mm=30&mn=sn-cvh76nl6&ms=nxu&mt=1763120447&mv=m&mvi=2&pl=44&lsparams=cps,ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRQIhAK2U1RqWqiHhfjbAuRaUL4jdEpWmSpyr57danatEvkukAiAY-V1_2xDTRZvUhfQvamMthKLSLf8MDOVZ72l_n_y5Zw%3D%3D" type="audio/mpeg">
+  </audio>
+  <button id="music-control">▶️ Play Music</button>
+  <br>
+<a href="cake.html" style="color:white; text-decoration:none; font-weight:bold; background:#ff1493; padding:10px 20px; border-radius:20px; display:inline-block; margin-top:15px;">🍰 Cut the Cake</a>
+
+
+  <script>
+    // Fireworks
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    const particles = [];
+    class Particle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.radius = Math.random() * 3 + 2;
+        this.speedX = Math.random() * 6 - 3;
+        this.speedY = Math.random() * 6 - 3;
+        this.life = 100;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life--;
+      }
+    }
+
+    function fireworks() {
+      if (Math.random() < 0.05) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height / 2;
+        const color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+        for (let i = 0; i < 50; i++) {
+          particles.push(new Particle(x, y, color));
+        }
+      }
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.update();
+        p.draw();
+        if (p.life <= 0) particles.splice(i, 1);
+      }
+      requestAnimationFrame(fireworks);
+    }
+    fireworks();
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+
+    // Floating balloons
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.background = `radial-gradient(circle at 30% 30%, #fff, hsl(${Math.random() * 360}, 100%, 70%))`;
+      balloon.style.animationDuration = 8 + Math.random() * 4 + 's';
+      document.body.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 10000);
+    }
+    setInterval(createBalloon, 1500);
+
+    // Music Control
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-control');
+    let playing = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (!playing) {
+        music.play().catch(e => console.log("Music play failed: ", e)); // Added error handling
+        musicBtn.textContent = '⏸ Pause Music';
+      } else {
+        music.pause();
+        musicBtn.textContent = '▶️ Play Music';
+      }
+      playing = !playing;
+    });
+
+    // Love letter popup
+    document.getElementById('open-letter').addEventListener('click', () => {
+      document.getElementById('love-letter').style.display = 'block';
+    });
+
+    window.addEventListener('resize', () => {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    });
+    
+  </script>
+</body>
+</html>
